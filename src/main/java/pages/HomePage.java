@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +13,8 @@ public class HomePage {
   private By createIssueButton = By.id("create_link");
   private By tempWindowIssueCreated = By.xpath("//*[contains(@class,'aui-will-close')]");
   private By createIssueTitle = By.xpath("//h2[@title='Create Issue']");
+  private By searchField = By.id("quickSearchInput");
+  private By userIcon = By.id("header-details-user-fullname");
 
   public HomePage(WebDriver driver) {
     this.driver = driver;
@@ -51,5 +54,18 @@ public class HomePage {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(tempWindowIssueCreated)).isDisplayed()
         && driver.findElement(By.xpath("//*[contains(@class,'aui-will-close')]")).getText().contains(text);
+  }
+
+  public boolean findUserIcon() {
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    return wait.until(ExpectedConditions.visibilityOfElementLocated(userIcon)).isDisplayed();
+  }
+
+  public void searchJiraTicket() {
+    new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(searchField)).sendKeys("WEBINAR-12202");
+  }
+
+  public void enterSearchJiraTicket() {
+    driver.findElement(searchField).sendKeys(Keys.ENTER);
   }
 }

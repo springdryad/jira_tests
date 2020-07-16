@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
+  private String username = "RuslanaChumachenko";
+  private String password = "RuslanaChumachenko";
+
   private WebDriver driver = null;
   private By userNameInput = By.id("login-form-username");
   private By passwordInput = By.id("login-form-password");
@@ -14,12 +17,12 @@ public class LoginPage {
     this.driver = driver;
   }
 
-  public void enterUserName(String name) {
+  public void enterUserName() {
     driver.findElement(userNameInput).clear();
-    driver.findElement(userNameInput).sendKeys(name);
+    driver.findElement(userNameInput).sendKeys(username);
   }
 
-  public void enterPassword(String password) {
+  public void enterPassword() {
     driver.findElement(passwordInput).sendKeys(password);
   }
 
@@ -27,8 +30,6 @@ public class LoginPage {
     driver.findElement(loginButton).click();
   }
 
-  public void navigateTo() {
-    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
-  }
+
 
 }
