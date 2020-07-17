@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Jira Tests" parallel="false">
+
+    <test name="Jira Test">
+        <classes>
+            <class name="TestCases"/>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="utils.TestNGListener"/>
+    </listeners>
+
+</suite>
