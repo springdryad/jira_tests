@@ -2,6 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.CreateIssueWindow;
 import pages.HomePage;
@@ -28,11 +29,42 @@ public class TestCases {
     jiraTicketPage = new JiraTicketPage(driver);
   }
 
+
   @Test
-  public void createIssue() {
+  public void successfulLoginTest() {
     homePage.navigateToHomePage();
-    loginPage.enterUserName();
-    loginPage.enterPassword();
+    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterPassword("RuslanaChumachenko");
+    loginPage.clickLoginButton();
+
+    Assert.assertTrue(homePage.findUserIcon());
+  }
+
+
+  @DataProvider(name = "unsuccessfulLogins")
+  public Object[][] createData() {
+    return new Object[][] {
+        { "RuslanaChumachenko", "wrong_password", "Sorry, your username and password are incorrect - please try again." },
+        { "wrong_username", "RuslanaChumachenko", "Sorry, your username and password are incorrect - please try again." },
+    };
+  }
+
+  @Test(dataProvider = "unsuccessfulLogins")
+  public void unsuccessfulLoginTest(String name, String password, String expectedResult) throws InterruptedException {
+    homePage.navigateToHomePage();
+    loginPage.enterUserName(name);
+    loginPage.enterPassword(password);
+    loginPage.clickLoginButton();
+
+    Assert.assertTrue(loginPage.errorMessageIsPresent(expectedResult));
+  }
+
+
+  @Test
+  public void createIssueTest() {
+    homePage.navigateToHomePage();
+    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterPassword("RuslanaChumachenko");
     loginPage.clickLoginButton();
 
     homePage.isCreateIssueButtonPresent();
@@ -59,12 +91,13 @@ public class TestCases {
     Assert.assertTrue(homePage.isIssueCreated("WEBINAR"));
   }
 
+
   @Test
-  public void addCommentForTicket() {
+  public void addCommentForTicketTest() {
     //login to home page
     homePage.navigateToHomePage();
-    loginPage.enterUserName();
-    loginPage.enterPassword();
+    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterPassword("RuslanaChumachenko");
     loginPage.clickLoginButton();
 
     //it is needed to wait until user becomes logged in, otherwise alert appears

@@ -2,32 +2,42 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
-
-  private String username = "RuslanaChumachenko";
-  private String password = "RuslanaChumachenko";
 
   private WebDriver driver = null;
   private By userNameInput = By.id("login-form-username");
   private By passwordInput = By.id("login-form-password");
   private By loginButton = By.id("login");
+  //private By loginErrorMessage = By.xpath("//*[contains(text(),\"" + message + "\")]");
 
   public LoginPage(WebDriver driver) {
     this.driver = driver;
   }
 
-  public void enterUserName() {
+  public void enterUserName(String username) {
     driver.findElement(userNameInput).clear();
     driver.findElement(userNameInput).sendKeys(username);
   }
 
-  public void enterPassword() {
+  public void enterPassword(String password) {
     driver.findElement(passwordInput).sendKeys(password);
   }
 
   public void clickLoginButton() {
     driver.findElement(loginButton).click();
+  }
+
+
+//  public boolean errorMessageIsPresent(String message) {
+//    return driver.findElement(loginErrorMessage).isDisplayed();
+//  }
+
+  public boolean errorMessageIsPresent(String message) {
+    new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), \"" + message + "\")]")));
+    return driver.findElement(By.xpath("//*[contains(text(), \"" + message + "\")]")).isDisplayed();
   }
 
 
