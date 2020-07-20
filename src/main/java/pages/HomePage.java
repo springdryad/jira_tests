@@ -20,18 +20,20 @@ public class HomePage {
     this.driver = driver;
   }
 
+
   public void navigateToHomePage() {
     driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
   }
+
 
   public void clickCreateIssue() {
     clickOnElementWithRetry(createIssueButton, createIssueTitle, 3, 3);
   }
 
+
   private void clickOnElementWithRetry(By elementToBeClicked, By successCriteriaElement, int attempts, int timeOutInSeconds) {
     WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
     for (int i = 0; i < attempts; i++) {
-      // driver.findElement(elementToBeClicked).click();
       try {
         wait.until(ExpectedConditions.visibilityOfElementLocated(successCriteriaElement)).isDisplayed();
         break;
@@ -40,30 +42,32 @@ public class HomePage {
         driver.findElement(elementToBeClicked).click();
       }
     }
-
   }
+
 
   public boolean isCreateIssueButtonPresent() {
-
     WebDriverWait wait = new WebDriverWait(driver, 3);
-    return wait.until(ExpectedConditions.elementToBeClickable(By.id("create_link"))).isDisplayed();
-
+    return wait.until(ExpectedConditions.elementToBeClickable(createIssueButton)).isDisplayed();
   }
+
 
   public boolean isIssueCreated(String text) {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(tempWindowIssueCreated)).isDisplayed()
-        && driver.findElement(By.xpath("//*[contains(@class,'aui-will-close')]")).getText().contains(text);
+        && driver.findElement(tempWindowIssueCreated).getText().contains(text);
   }
+
 
   public boolean findUserIcon() {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(userIcon)).isDisplayed();
   }
 
+
   public void searchJiraTicket() {
     new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(searchField)).sendKeys("WEBINAR-12202");
   }
+
 
   public void enterSearchJiraTicket() {
     driver.findElement(searchField).sendKeys(Keys.ENTER);

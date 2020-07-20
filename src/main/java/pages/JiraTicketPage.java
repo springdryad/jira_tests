@@ -17,34 +17,42 @@ public class JiraTicketPage {
   private By deleteDialogButton = By.id("comment-delete-submit");
   private By deleteCommentButton = By.xpath("//p[contains(text(),'" + comment + "')]//parent::div//parent::div//a[contains(@id, 'delete')]");
 
+
   public JiraTicketPage(WebDriver driver) {
     this.driver = driver;
   }
+
 
   public void clickCommentButton() {
     new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(commentButton)).click();
   }
 
+
   public void enterTextToCommentField() {
     driver.findElement(commentField).sendKeys(comment);
   }
 
+
   public void clickAddCommentButton() {
     driver.findElement(addCommentButton).click();
   }
+
 
   public boolean isCommentAdded() {
     new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(addedComment));
     return driver.findElement(addedComment).getText().contains(comment);
   }
 
+
   public void clickOnDeleteComment() {
     driver.findElement(deleteCommentButton).click();
   }
 
+
   public void clickDeleteDialogButton() {
     new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(deleteDialogButton)).click();
   }
+
 
   public boolean isCommentDeleted() {
     return new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(addedComment));

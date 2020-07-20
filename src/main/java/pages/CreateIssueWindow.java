@@ -17,13 +17,14 @@ public class CreateIssueWindow {
   private By issueDescription = By.id("description");
   private By createIssueButton = By.id("create-issue-submit");
 
+
   public CreateIssueWindow(WebDriver driver) {
     this.driver = driver;
   }
 
   public boolean isProjectFieldDisplayed() {
     WebDriverWait wait = new WebDriverWait(driver, 3);
-    return wait.until(ExpectedConditions.elementToBeClickable(By.id("project-field"))).isDisplayed();
+    return wait.until(ExpectedConditions.elementToBeClickable(projectField)).isDisplayed();
   }
 
   public void clearProjectField() {
@@ -40,7 +41,7 @@ public class CreateIssueWindow {
 
   public boolean isIssueTypeFieldDisplayed() {
     WebDriverWait wait = new WebDriverWait(driver, 3);
-    return wait.until(ExpectedConditions.elementToBeClickable(By.id("issuetype-field"))).isDisplayed();
+    return wait.until(ExpectedConditions.elementToBeClickable(issueTypeField)).isDisplayed();
   }
 
   public void clearIssueTypeField() {
@@ -57,7 +58,7 @@ public class CreateIssueWindow {
 
   public boolean isSummaryFieldDisplayed() {
     WebDriverWait wait = new WebDriverWait(driver, 10);
-    return wait.until(ExpectedConditions.elementToBeClickable(By.id("summary"))).isDisplayed();
+    return wait.until(ExpectedConditions.elementToBeClickable(summaryField)).isDisplayed();
   }
 
   public void enterSummary(String text) {
@@ -83,5 +84,4 @@ public class CreateIssueWindow {
   public void pressCreateIssueButton() {
     driver.findElement(createIssueButton).click();
   }
-
 }

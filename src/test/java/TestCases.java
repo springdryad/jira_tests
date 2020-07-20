@@ -1,9 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.CreateIssueWindow;
 import pages.HomePage;
 import pages.JiraTicketPage;
@@ -43,14 +40,15 @@ public class TestCases {
 
   @DataProvider(name = "unsuccessfulLogins")
   public Object[][] createData() {
-    return new Object[][] {
-        { "RuslanaChumachenko", "wrong_password", "Sorry, your username and password are incorrect - please try again." },
-        { "wrong_username", "RuslanaChumachenko", "Sorry, your username and password are incorrect - please try again." },
+    return new Object[][]{
+        {"RuslanaChumachenko", "wrong_password", "Sorry, your username and password are incorrect - please try again."},
+        {"wrong_username", "RuslanaChumachenko", "Sorry, your username and password are incorrect - please try again."},
     };
   }
 
+
   @Test(dataProvider = "unsuccessfulLogins")
-  public void unsuccessfulLoginTest(String name, String password, String expectedResult) throws InterruptedException {
+  public void unsuccessfulLoginTest(String name, String password, String expectedResult) {
     homePage.navigateToHomePage();
     loginPage.enterUserName(name);
     loginPage.enterPassword(password);
@@ -127,6 +125,4 @@ public class TestCases {
   public void tearDown() {
     driver.quit();
   }
-
-
 }
