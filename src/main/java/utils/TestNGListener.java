@@ -5,6 +5,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,9 @@ public class TestNGListener implements ITestListener {
 
   @Override
   public void onTestStart(ITestResult result) {
+//    String browserName = result.getTestContext().getCurrentXmlTest().getParameter("browserName");
+//    WebDriverFactory.createInstance(browserName);
+
 
   }
 
@@ -43,7 +47,10 @@ public class TestNGListener implements ITestListener {
       e.printStackTrace();
     }
     WebDriverFactory.getDriver().quit();
+
   }
+
+
 
   @Override
   public void onTestSkipped(ITestResult result) {
@@ -57,12 +64,13 @@ public class TestNGListener implements ITestListener {
 
   @Override
   public void onStart(ITestContext context) {
-
+//    String browserName = context.getCurrentXmlTest().getParameter("browserName");
+//    WebDriverFactory.createInstance(browserName);
   }
 
   @Override
   public void onFinish(ITestContext context) {
-    WebDriverFactory.getDriver().quit();
+    //WebDriverFactory.getDriver().quit();
   }
 
   private File captureScreenshot() {

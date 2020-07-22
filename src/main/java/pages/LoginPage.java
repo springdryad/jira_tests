@@ -20,7 +20,7 @@ public class LoginPage {
 
 
   public void enterUserName(String username) {
-    driver.findElement(userNameInput).clear();
+    new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(userNameInput)).clear();
     driver.findElement(userNameInput).sendKeys(username);
   }
 
