@@ -51,7 +51,6 @@ public class TestNGListener implements ITestListener {
   }
 
 
-
   @Override
   public void onTestSkipped(ITestResult result) {
 

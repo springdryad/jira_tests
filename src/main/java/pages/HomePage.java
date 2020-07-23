@@ -59,7 +59,7 @@ public class HomePage {
 
 
   public boolean findUserIcon() {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
+    WebDriverWait wait = new WebDriverWait(driver, 10);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(userIcon)).isDisplayed();
   }
 
