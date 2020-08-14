@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Jira Tests Suite" parallel="false">
 
-    <test name="Jira Test">
+    <test name="TestCases">
         <parameter name="browserName" value="firefox"/>
 
         <classes>
