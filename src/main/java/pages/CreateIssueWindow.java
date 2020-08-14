@@ -15,7 +15,7 @@ public class CreateIssueWindow {
   private By reporterField = By.id("reporter-field");
   private By summaryMode = By.xpath("//ul/li[@data-mode='source']");
   private By issueDescription = By.id("description");
-  private By createIssueButton = By.id("create-issue-submit");
+  private By createIssueSubmit = By.id("create-issue-submit");
 
 
   public CreateIssueWindow(WebDriver driver) {
@@ -23,8 +23,8 @@ public class CreateIssueWindow {
   }
 
   public boolean isProjectFieldDisplayed() {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
-    return wait.until(ExpectedConditions.elementToBeClickable(projectField)).isDisplayed();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    return wait.until(ExpectedConditions.visibilityOfElementLocated(projectField)).isDisplayed();
   }
 
   public void clearProjectField() {
@@ -82,6 +82,6 @@ public class CreateIssueWindow {
   }
 
   public void pressCreateIssueButton() {
-    driver.findElement(createIssueButton).click();
+    driver.findElement(createIssueSubmit).click();
   }
 }

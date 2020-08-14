@@ -1,0 +1,6 @@
+# Project exclude paths
+/target/
+/src/test/java/OneEqualsOne.java
+/src/test/java/OneNotEqualsZero.java
+/jira_tests.iml
+/src/test/java/ParametersTest.java

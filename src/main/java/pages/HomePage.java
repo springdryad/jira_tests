@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,7 +9,7 @@ public class HomePage {
 
   private By createIssueButton = By.id("create_link");
   private By tempWindowIssueCreated = By.xpath("//*[contains(@class,'aui-will-close')]");
-  private By createIssueTitle = By.xpath("//h2[@title='Create Issue']");
+  private By createIssueDialog = By.id("create-issue-dialog");
   private By searchField = By.id("quickSearchInput");
   private By userIcon = By.id("header-details-user-fullname");
 
@@ -27,7 +24,7 @@ public class HomePage {
 
 
   public void clickCreateIssue() {
-    clickOnElementWithRetry(createIssueButton, createIssueTitle, 3, 3);
+    clickOnElementWithRetry(createIssueButton, createIssueDialog, 3, 3);
   }
 
 
@@ -35,18 +32,17 @@ public class HomePage {
     WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
     for (int i = 0; i < attempts; i++) {
       try {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(successCriteriaElement)).isDisplayed();
-        break;
-      } catch (TimeoutException e) {
         wait.until(ExpectedConditions.elementToBeClickable(elementToBeClicked));
         driver.findElement(elementToBeClicked).click();
+        break;
+      } catch (TimeoutException e) {
       }
     }
+    wait.until(ExpectedConditions.visibilityOfElementLocated(successCriteriaElement)).isDisplayed();
   }
 
-
   public boolean isCreateIssueButtonPresent() {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
+    WebDriverWait wait = new WebDriverWait(driver, 20);
     return wait.until(ExpectedConditions.elementToBeClickable(createIssueButton)).isDisplayed();
   }
 
@@ -59,7 +55,7 @@ public class HomePage {
 
 
   public boolean findUserIcon() {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
+    WebDriverWait wait = new WebDriverWait(driver, 10);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(userIcon)).isDisplayed();
   }
 

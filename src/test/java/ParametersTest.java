@@ -34,7 +34,6 @@ public class ParametersTest {
   }
 
 
-
   @AfterMethod
   public void tearDown() {
     driver.quit();
