@@ -56,7 +56,7 @@ public class TestCases {
   @Test
   public void createIssueTest() {
     homePage.navigateToHomePage();
-    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterUserName("RuslanaChumachenko5");
     loginPage.enterPassword("RuslanaChumachenko");
     loginPage.clickLoginButton();
 
