@@ -17,7 +17,7 @@ public class TestCases {
 
   @BeforeMethod
   public void setUp() {
-    WebDriverFactory.createInstance("Firefox");
+    WebDriverFactory.createInstance("chrome");
     driver = WebDriverFactory.getDriver();
     loginPage = new LoginPage(driver);
     homePage = new HomePage(driver);
