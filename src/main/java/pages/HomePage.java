@@ -17,16 +17,13 @@ public class HomePage {
     this.driver = driver;
   }
 
-
   public void navigateToHomePage() {
     driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
   }
 
-
   public void clickCreateIssue() {
     clickOnElementWithRetry(createIssueButton, createIssueDialog, 3, 3);
   }
-
 
   private void clickOnElementWithRetry(By elementToBeClicked, By successCriteriaElement, int attempts, int timeOutInSeconds) {
     WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -46,24 +43,20 @@ public class HomePage {
     return wait.until(ExpectedConditions.elementToBeClickable(createIssueButton)).isDisplayed();
   }
 
-
   public boolean isIssueCreated(String text) {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(tempWindowIssueCreated)).isDisplayed()
         && driver.findElement(tempWindowIssueCreated).getText().contains(text);
   }
 
-
   public boolean findUserIcon() {
     WebDriverWait wait = new WebDriverWait(driver, 10);
     return wait.until(ExpectedConditions.visibilityOfElementLocated(userIcon)).isDisplayed();
   }
 
-
   public void searchJiraTicket() {
     new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(searchField)).sendKeys("WEBINAR-12202");
   }
-
 
   public void enterSearchJiraTicket() {
     driver.findElement(searchField).sendKeys(Keys.ENTER);
