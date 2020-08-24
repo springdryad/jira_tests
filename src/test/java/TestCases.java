@@ -28,7 +28,7 @@ public class TestCases {
   @Test
   public void successfulLoginTest() {
     homePage.navigateToHomePage();
-    loginPage.enterUserName("RuslanaChumachenko5");
+    loginPage.enterUserName("RuslanaChumachenko");
     loginPage.enterPassword("RuslanaChumachenko");
     loginPage.clickLoginButton();
 
