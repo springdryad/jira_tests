@@ -15,7 +15,6 @@ public class TestCases {
   private CreateIssueWindow createIssueWindow;
   private JiraTicketPage jiraTicketPage;
 
-
   @BeforeMethod
   public void setUp() {
     WebDriverFactory.createInstance("Firefox");
@@ -25,7 +24,6 @@ public class TestCases {
     createIssueWindow = new CreateIssueWindow(driver);
     jiraTicketPage = new JiraTicketPage(driver);
   }
-
 
   @Test
   public void successfulLoginTest() {
@@ -37,7 +35,6 @@ public class TestCases {
     Assert.assertTrue(homePage.findUserIcon());
   }
 
-
   @DataProvider(name = "unsuccessfulLogins")
   public Object[][] createData() {
     return new Object[][]{
@@ -45,7 +42,6 @@ public class TestCases {
         {"wrong_username", "RuslanaChumachenko", "Sorry, your username and password are incorrect - please try again."},
     };
   }
-
 
   @Test(dataProvider = "unsuccessfulLogins")
   public void unsuccessfulLoginTest(String name, String password, String expectedResult) {
@@ -56,7 +52,6 @@ public class TestCases {
 
     Assert.assertTrue(loginPage.errorMessageIsPresent(expectedResult));
   }
-
 
   @Test
   public void createIssueTest() {
@@ -89,7 +84,6 @@ public class TestCases {
     Assert.assertTrue(homePage.isIssueCreated("WEBINAR"));
   }
 
-
   @Test
   public void addCommentForTicketTest() {
     //login to home page
@@ -119,7 +113,6 @@ public class TestCases {
     //verify that comment has been deleted
     Assert.assertTrue(jiraTicketPage.isCommentDeleted());
   }
-
 
   @AfterMethod
   public void tearDown() {
