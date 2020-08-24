@@ -38,8 +38,8 @@ public class TestCases {
   @DataProvider(name = "unsuccessfulLogins")
   public Object[][] createData() {
     return new Object[][]{
-        {"RuslanaChumachenko", "wrong_password", "Sorry, your username and password are incorrect - please try again."},
-        {"wrong_username", "RuslanaChumachenko", "Sorry, your username and password are incorrect - please try again."},
+        {"RuslanaChumachenko", "wrong_password", "Извините, имя пользователя или пароль неверны - пожалуйста, попробуйте еще раз."},
+        {"wrong_username", "RuslanaChumachenko", "Извините, имя пользователя или пароль неверны - пожалуйста, попробуйте еще раз."},
     };
   }
 
