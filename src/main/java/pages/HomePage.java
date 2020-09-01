@@ -63,7 +63,7 @@ public class HomePage {
   }
 
   public void searchJiraTicket() {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(searchField)).sendKeys("WEBINAR-12202");
+    new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(searchField)).sendKeys("WEBINAR-12560");
   }
 
   public void enterSearchJiraTicket() {
