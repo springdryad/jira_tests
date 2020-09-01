@@ -32,12 +32,12 @@ public class CreateIssueWindow {
   public void enterIssueTypeField(String text) {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     wait.until(ExpectedConditions.elementToBeClickable(issueTypeField)).clear();
-    driver.findElement(issueTypeField).sendKeys(text,Keys.TAB);
+    driver.findElement(issueTypeField).sendKeys(text, Keys.TAB);
   }
 
   public void enterSummary(String text) {
     WebDriverWait wait = new WebDriverWait(driver, 10);
-    wait.until(ExpectedConditions.elementToBeClickable(summaryField)).sendKeys(text,Keys.TAB);
+    wait.until(ExpectedConditions.elementToBeClickable(summaryField)).sendKeys(text, Keys.TAB);
   }
 
   public void enterReporterField(String text) {
@@ -57,25 +57,25 @@ public class CreateIssueWindow {
     driver.findElement(createIssueSubmit).click();
   }
 
-  public void clickCancelButton(){
+  public void clickCancelButton() {
     WebDriverWait wait = new WebDriverWait(driver, 10);
     wait.until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
   }
 
-  public void acceptAlert(){
+  public void acceptAlert() {
     driver.switchTo().alert().accept();
   }
 
-  public void dismissAlert(){
+  public void dismissAlert() {
     driver.switchTo().alert().dismiss();
   }
 
-  public boolean isCreateIssueWindowDisappear(){
+  public boolean isCreateIssueWindowDisappear() {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.invisibilityOfElementLocated(createIssueWindow));
   }
 
-  public boolean isCreateIssueWindowDoesNotDisappear(){
+  public boolean isCreateIssueWindowDoesNotDisappear() {
     WebDriverWait wait = new WebDriverWait(driver, 3);
     return wait.until(ExpectedConditions.presenceOfElementLocated(createIssueWindow)).isDisplayed();
   }

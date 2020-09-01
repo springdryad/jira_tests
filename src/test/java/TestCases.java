@@ -105,7 +105,7 @@ public class TestCases {
   }
 
   @Test
-  public void cancelCreateIssueAcceptAlert(){
+  public void cancelCreateIssueAcceptAlert() {
     //login to home page
     homePage.navigateToHomePage();
     loginPage.enterUserName("RuslanaChumachenko");
@@ -126,7 +126,7 @@ public class TestCases {
   }
 
   @Test
-  public void cancelCreateIssueDismissAlert(){
+  public void cancelCreateIssueDismissAlert() {
     //login to home page
     homePage.navigateToHomePage();
     loginPage.enterUserName("RuslanaChumachenko");
