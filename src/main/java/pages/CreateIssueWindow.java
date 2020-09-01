@@ -16,60 +16,32 @@ public class CreateIssueWindow {
   private By summaryMode = By.xpath("//ul/li[@data-mode='source']");
   private By issueDescription = By.id("description");
   private By createIssueSubmit = By.id("create-issue-submit");
-
+  private By cancelButton = By.xpath("//a[@class='cancel']");
+  private By createIssueWindow = By.id("create-issue-dialog");
 
   public CreateIssueWindow(WebDriver driver) {
     this.driver = driver;
   }
 
-  public boolean isProjectFieldDisplayed() {
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    return wait.until(ExpectedConditions.visibilityOfElementLocated(projectField)).isDisplayed();
-  }
-
-  public void clearProjectField() {
-    driver.findElement(projectField).clear();
-  }
-
   public void enterProjectField(String text) {
-    driver.findElement(projectField).sendKeys(text);
-  }
-
-  public void pressTabAfterProjectField() {
-    driver.findElement(projectField).sendKeys(Keys.TAB);
-  }
-
-  public boolean isIssueTypeFieldDisplayed() {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
-    return wait.until(ExpectedConditions.elementToBeClickable(issueTypeField)).isDisplayed();
-  }
-
-  public void clearIssueTypeField() {
-    driver.findElement(issueTypeField).clear();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.elementToBeClickable(projectField)).clear();
+    driver.findElement(projectField).sendKeys(text, Keys.TAB);
   }
 
   public void enterIssueTypeField(String text) {
-    driver.findElement(issueTypeField).sendKeys(text);
-  }
-
-  public void pressTabAfterIssueTypeField() {
-    driver.findElement(issueTypeField).sendKeys(Keys.TAB);
-  }
-
-  public boolean isSummaryFieldDisplayed() {
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    return wait.until(ExpectedConditions.elementToBeClickable(summaryField)).isDisplayed();
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    wait.until(ExpectedConditions.elementToBeClickable(issueTypeField)).clear();
+    driver.findElement(issueTypeField).sendKeys(text,Keys.TAB);
   }
 
   public void enterSummary(String text) {
-    driver.findElement(summaryField).sendKeys(text);
-  }
-
-  public void clearReporterField() {
-    driver.findElement(reporterField).clear();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.elementToBeClickable(summaryField)).sendKeys(text,Keys.TAB);
   }
 
   public void enterReporterField(String text) {
+    driver.findElement(reporterField).clear();
     driver.findElement(reporterField).sendKeys(text);
   }
 
@@ -83,5 +55,28 @@ public class CreateIssueWindow {
 
   public void pressCreateIssueButton() {
     driver.findElement(createIssueSubmit).click();
+  }
+
+  public void clickCancelButton(){
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+  }
+
+  public void acceptAlert(){
+    driver.switchTo().alert().accept();
+  }
+
+  public void dismissAlert(){
+    driver.switchTo().alert().dismiss();
+  }
+
+  public boolean isCreateIssueWindowDisappear(){
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    return wait.until(ExpectedConditions.invisibilityOfElementLocated(createIssueWindow));
+  }
+
+  public boolean isCreateIssueWindowDoesNotDisappear(){
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    return wait.until(ExpectedConditions.presenceOfElementLocated(createIssueWindow)).isDisplayed();
   }
 }

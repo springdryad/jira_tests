@@ -63,19 +63,9 @@ public class TestCases {
     homePage.isCreateIssueButtonPresent();
     homePage.clickCreateIssue();
 
-    createIssueWindow.isProjectFieldDisplayed();
-    createIssueWindow.clearProjectField();
     createIssueWindow.enterProjectField("Webinar");
-    createIssueWindow.pressTabAfterProjectField();
-
-    createIssueWindow.isIssueTypeFieldDisplayed();
-    createIssueWindow.clearIssueTypeField();
     createIssueWindow.enterIssueTypeField("Task");
-    createIssueWindow.pressTabAfterIssueTypeField();
-
-    createIssueWindow.isSummaryFieldDisplayed();
     createIssueWindow.enterSummary("Ruslana's task #3");
-    createIssueWindow.clearReporterField();
     createIssueWindow.enterReporterField("RuslanaChumachenko");
     createIssueWindow.selectDescriptionMode();
     createIssueWindow.enterDescription("Sample description");
@@ -112,6 +102,48 @@ public class TestCases {
 
     //verify that comment has been deleted
     Assert.assertTrue(jiraTicketPage.isCommentDeleted());
+  }
+
+  @Test
+  public void cancelCreateIssueAcceptAlert(){
+    //login to home page
+    homePage.navigateToHomePage();
+    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterPassword("RuslanaChumachenko");
+    loginPage.clickLoginButton();
+
+    //click Create Issue button and enter summary
+    homePage.isCreateIssueButtonPresent();
+    homePage.clickCreateIssue();
+    createIssueWindow.enterSummary("Ruslana's task #3");
+
+    //click Cancel button and accept alert
+    createIssueWindow.clickCancelButton();
+    createIssueWindow.acceptAlert();
+
+    // make sure that Create Issue window disappeared
+    Assert.assertTrue(createIssueWindow.isCreateIssueWindowDisappear());
+  }
+
+  @Test
+  public void cancelCreateIssueDismissAlert(){
+    //login to home page
+    homePage.navigateToHomePage();
+    loginPage.enterUserName("RuslanaChumachenko");
+    loginPage.enterPassword("RuslanaChumachenko");
+    loginPage.clickLoginButton();
+
+    //click Create Issue button and enter summary
+    homePage.isCreateIssueButtonPresent();
+    homePage.clickCreateIssue();
+    createIssueWindow.enterSummary("Ruslana's task #3");
+
+    //click Cancel button and dismiss alert
+    createIssueWindow.clickCancelButton();
+    createIssueWindow.dismissAlert();
+
+    // make sure that Create Issue window did not disappear
+    Assert.assertTrue(createIssueWindow.isCreateIssueWindowDoesNotDisappear());
   }
 
   @AfterMethod
