@@ -6,7 +6,7 @@
  <b>Before you start</b>
  
  1) Download and set up Intellij Idea IDE.
- 2) Import the project: navigate to VCS => Get from version control in Intellij Idea IDE. 
+ 2) Import the project: navigate to File => New => Project from Version Control... in Intellij Idea IDE. 
  3) Enter repository URL https://github.com/springdryad/jira_tests.git , select local directory and click Clone button.
  
  <b>Test Execution</b>
