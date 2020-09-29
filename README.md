@@ -3,7 +3,15 @@
  2) create issue
  3) dismiss and accept alert when cancelling create issue
  
- To run the project import it on your local IDE and click Run => Run... and select a test.
+ <b>Before you start</b>
+ 
+ 1) Download and set up Intellij Idea IDE.
+ 2) Import the project: navigate to VCS => Get from version control in Intellij Idea IDE. 
+ 3) Enter repository URL https://github.com/springdryad/jira_tests.git , select local directory and click Clone button.
+ 
+ <b>Test Execution</b>
+ 
+ To run the tests click Run => Run... and select a test in Intellij Idea IDE.
  
  <b>Build status:</b>
  <div>
