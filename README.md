@@ -3,7 +3,7 @@
  2) create issue
  3) dismiss and accept alert when cancelling create issue
  
- <b>Before you start</b>
+ <h2>Before you start</h2>
 1. Required soft:
  * Java JDK 8 
  * Git 
@@ -19,15 +19,16 @@
 
 [![idea-get-from-version-control.png](https://i.postimg.cc/wxGrN1Zf/idea-get-from-version-control.png)](https://postimg.cc/G9vzwmcG)
 
- <b>Test Execution</b>
+ <h2>Test Execution</h2>
  
- 3. To run the tests expand the project structure and right click on 'TestCases' class => click Run 'TestCases'.
+To run the tests expand the project structure and right click on 'TestCases' class => click Run 'TestCases'.
+
  
  [![idea-run-tests.png](https://i.postimg.cc/T1vSSFxy/idea-run-tests.png)](https://postimg.cc/phkq50px)
  
  
  
- <b>Build status:</b>
+ <h2>Build status:</h2>
  <div>
  </div>
  
