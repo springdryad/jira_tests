@@ -4,12 +4,16 @@
  3) dismiss and accept alert when cancelling create issue
  
  <h2>Before you start</h2>
+ 
 1. Required soft:
+
  * Java JDK 8 
  * Git 
  * Maven
  * Intellij Idea IDE.
+ 
 2. Import the project: 
+
 * Navigate to File => New => Project from Version Control... in Intellij Idea IDE. 
 
 [![idea-file-new-project.png](https://i.postimg.cc/KjqQmTbX/idea-file-new-project.png)](https://postimg.cc/T5bn9phQ)
